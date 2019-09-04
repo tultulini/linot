@@ -24,7 +24,13 @@ function transform(transformations, data) {
     let transformCount = transformations.length
     let transformedData = data
     for (let idx = 0; idx < transformCount; idx++) {
-        transformedData = transformations[idx].handler(transformedData)
+
+        try {
+            transformedData = transformations[idx].handler(transformedData)
+        }
+        catch (error) {
+            throw new Error(`Transformation version:${transformations[idx].version.toString()} had an error: ${error}`)
+        }
     }
 
     return transformedData

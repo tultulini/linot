@@ -1,9 +1,14 @@
 import { Transformation } from "./linot";
-let testData = { fname: 't', lname: 'f' ,bark:()=>console.log('woof')}
-const transformation = (new Transformation(capitalizer, 1)).appendHandler(changePropNames, 2)
-const data = transformation.transform(testData)
-console.log(JSON.stringify(data, null, '\t'))
-data.bark()
+let testData = { fname: 't', lname: 'f'}
+const transformation = (new Transformation(capitalizer, "1.2.1")).appendHandler(changePropNames, "1.2.3")
+
+try {
+    const data = transformation.transform(testData)
+    console.log(JSON.stringify(data, null, '\t'))
+
+} catch (error) {
+    console.error(error)
+}
 
 
 function capitalizer(data) {

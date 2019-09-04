@@ -50,7 +50,7 @@ export function compareVersions(v1, v2) {
     const v2Arr = v2.toArray()
     let idx
 
-    for (idx = 0; idx < MAX_PART_COUNT; id++) {
+    for (idx = 0; idx < MAX_PART_COUNT; idx++) {
         if (v1Arr[idx] > v2Arr[idx]) {
             return 1
         }
