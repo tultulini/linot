@@ -1,0 +1,28 @@
+{
+  "name": "linot",
+  "version": "1.0.0",
+  "description": "linear object transformation",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "debug": "babel-node debug index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tultulini/linot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tultulini/linot/issues"
+  },
+  "homepage": "https://github.com/tultulini/linot#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.3.0"
+  },
+  "dependencies": {}
+}
