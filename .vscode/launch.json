@@ -9,7 +9,7 @@
 			"name": "ES6 Debugger",
 			"program": "${workspaceFolder}/index.js",
 			"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
-			"runtimeArgs": ["--presets", "env"]
+			"runtimeArgs": ["--presets", "@babel/preset-env"]
         }
 	]
 }
