@@ -1,10 +1,20 @@
 import { Transformation } from "./linot";
-let testData = { fname: 't', lname: 'f'}
-const transformation = (new Transformation(capitalizer, "1.2.1")).appendHandler(changePropNames, "1.2.3")
+let testData =
+{
+    fname: 't',
+    lname: 'f'
+}
+
+const transformation = new Transformation()
+transformation.appendHandler(capitalizer, "1.2.1")
+transformation.appendAsyncHandler(changePropNames, "1.2.3")
+
 
 try {
-    const data = transformation.transform(testData)
-    console.log(JSON.stringify(data, null, '\t'))
+    transformation.transformAsync(testData).then((data) => {
+        console.log(JSON.stringify(data, null, '\t'))
+    })
+
 
 } catch (error) {
     console.error(error)
@@ -19,12 +29,14 @@ function capitalizer(data) {
 }
 
 function changePropNames(data) {
-    const newData = Object.assign({}, data)
-    newData.firstName = data.fname
-    newData.lastName = data.lname
-    delete newData.fname
-    delete newData.lname
-    return newData
+    return new Promise((resolve) => {
+        const newData = Object.assign({}, data)
+        newData.firstName = data.fname
+        newData.lastName = data.lname
+        delete newData.fname
+        delete newData.lname
+        resolve(newData)
+    })
 }
 
 
