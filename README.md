@@ -92,3 +92,36 @@ and then you'll get:
 	"lastName": "F"
 }
 ```
+## Async Transform
+you can add Asynchronous transformations by calling ***appendAsyncHandler***
+you can mix it up with ***appendHandler*** too but at the end you must call 
+***transformAsync*** or you will receive an error:
+
+```
+
+transformation.appendHandler(capitalizer, "1.2.1")
+transformation.appendAsyncHandler(changePropNames, "1.2.3")
+
+
+try {
+    transformation.transformAsync(testData).then((data) => {
+        console.log(JSON.stringify(data, null, '\t'))
+    })
+
+
+} catch (error) {
+    console.error(error)
+}
+
+function changePropNames(data) {
+    return new Promise((resolve) => {
+        const newData = Object.assign({}, data)
+        newData.firstName = data.fname
+        newData.lastName = data.lname
+        delete newData.fname
+        delete newData.lname
+        resolve(newData)
+    })
+}
+
+```
